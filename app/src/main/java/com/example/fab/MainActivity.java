@@ -42,18 +42,21 @@ public class MainActivity extends AppCompatActivity {
         String passwordVal = password.getText().toString();
         RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
         String genderVal = checkedBtn.getText().toString();
-        Toast.makeText(this, "name: "+nameVal
-                +"\nemail: "+emailVal
-                +"\naddress: "+addressVal
-                +"\npassword: "+passwordVal
-                +"\ngender: "+genderVal
-                , Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "name: "+nameVal
+//                +"\nemail: "+emailVal
+//                +"\naddress: "+addressVal
+//                +"\npassword: "+passwordVal
+//                +"\ngender: "+genderVal
+//                , Toast.LENGTH_LONG).show();
 
          SharedPreferences.Editor editor = preferences.edit();
          editor.putString("name",nameVal);
          editor.putString("email",emailVal);
          editor.putString("password",passwordVal);
          editor.putString("gender",genderVal);
+         editor.putString("address", addressVal);
+         editor.putString("gender", genderVal);
          editor.apply();
+        Toast.makeText(this, "UserInfo Saved", Toast.LENGTH_SHORT).show();
     }
 }
