@@ -1,5 +1,6 @@
 package com.example.fab;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -17,12 +18,14 @@ public class MainActivity extends AppCompatActivity {
     EditText name, email, address, password;
     RadioGroup gender;
     Button submit, cancel;
+    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_design);
 
+        preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
         address = findViewById(R.id.address);
@@ -45,5 +48,12 @@ public class MainActivity extends AppCompatActivity {
                 +"\npassword: "+passwordVal
                 +"\ngender: "+genderVal
                 , Toast.LENGTH_LONG).show();
+
+         SharedPreferences.Editor editor = preferences.edit();
+         editor.putString("name",nameVal);
+         editor.putString("email",emailVal);
+         editor.putString("password",passwordVal);
+         editor.putString("gender",genderVal);
+         editor.apply();
     }
 }

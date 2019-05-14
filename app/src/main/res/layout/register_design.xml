@@ -1,161 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    >
+    android:orientation="vertical">
+
     <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorWhite"
         android:background="@color/colorAccent"
         android:gravity="center"
-        android:text="@string/app_name"
-        android:id="@+id/title"
         android:padding="25dp"
-        />
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
+        android:text="@string/app_name"
+        android:textColor="@color/colorWhite" />
 
-        android:paddingLeft="10dp"
-        android:paddingRight="5dp"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name"
-            android:layout_marginBottom="5dp"
-            android:textColor="@color/colorWhite"
-            />
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter your full name"
-            android:textColor="@color/colorAccent"
-            android:layout_marginBottom="10dp"
-            android:textColorHint="@color/colorWhite"
-            />
+        <LinearLayout
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
-            android:text="Email"
-            android:layout_marginBottom="5dp"
-            android:textColor="@color/colorWhite"
-            />
-        <EditText
-            android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter your email"
-            android:textColor="@color/colorAccent"
-            android:layout_marginBottom="10dp"
-            android:textColorHint="@color/colorWhite"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Address"
-            android:layout_marginBottom="5dp"
-            android:textColor="@color/colorWhite"
-            />
-        <EditText
-            android:id="@+id/address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter your address"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorWhite"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Password"
-            android:layout_marginBottom="5dp"
-            android:textColor="@color/colorWhite"
-            />
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter your password"
-            android:layout_marginBottom="10dp"
-            android:inputType="textPassword"
-            android:textColor="@color/colorAccent"
-            android:textColorHint="@color/colorWhite"
-            />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Name"
+                android:textColor="@color/colorWhite" />
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter your full name"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorWhite" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:paddingBottom="5dp"
+                android:text="Email"
+                android:textColor="@color/colorWhite" />
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter your email"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorWhite" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Address"
+                android:textColor="@color/colorWhite" />
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter your address"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorWhite" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Password"
+                android:textColor="@color/colorWhite" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="Enter your password"
+                android:inputType="textPassword"
+                android:textColor="@color/colorAccent"
+                android:textColorHint="@color/colorWhite" />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Gender"
                 android:layout_marginBottom="5dp"
-                android:textColor="@color/colorWhite"
-                />
+                android:text="Gender"
+                android:textColor="@color/colorWhite" />
 
-            <RadioGroup
+            <LinearLayout
                 android:layout_width="match_parent"
+                android:weightSum="2"
                 android:layout_height="wrap_content"
-                android:id="@+id/gender"
-                android:checkedButton="@id/male"
-                >
-                <LinearLayout
+                android:orientation="horizontal">
+                <RadioGroup
+                    android:id="@+id/gender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:weightSum="2"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_weight="2"
+                    android:checkedButton="@id/gender">
+                    <RadioButton
+                        android:id="@+id/male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Male"
+                        android:textColor="@color/colorWhite" />
+                    <RadioButton
+                        android:id="@+id/female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Female"
+                        android:textColor="@color/colorWhite" />
+                </RadioGroup>
 
-                <RadioButton
-                    android:layout_width="wrap_content"
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/submit"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:id="@+id/male"
-                    android:text="Male"
-                    android:textColor="@color/colorWhite"
-                    />
+                    android:onClick="submitClick"
+                    android:text="Submit" />
 
-                <RadioButton
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/cancel"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:id="@+id/female"
-                    android:text="Female"
-                    android:textColor="@color/colorWhite"
-                    />
-                </LinearLayout>
-            </RadioGroup>
+                    android:text="Cancel" />
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <Button
-                android:id="@+id/submit"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:onClick="submitClick"
-                android:text="Submit"/>
-            <Button
-                android:id="@+id/cancel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Cancel"/>
         </LinearLayout>
-
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
 </LinearLayout>
