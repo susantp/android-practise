@@ -2,20 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent" >
 
-    <TextView android:id="@+id/title"
-        android:text="Login Form"
+    <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
+        android:background="@color/colorPrimary"
         android:gravity="center"
-        android:textColor="@color/colorWhite"
         android:padding="10dp"
-        android:textStyle="bold"
-        android:background="@color/colorPrimary"/>
+        android:text="@string/loginTitle"
+        android:textColor="@color/colorWhite"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/lusername"
-        android:hint="username"
+        android:hint="@string/loginUser"
         android:layout_margin="20dp"
         android:textColorHint="@color/colorBlack"
         android:layout_width="match_parent"
@@ -28,7 +29,7 @@
 
     <EditText
         android:id="@+id/lpassword"
-        android:hint="password"
+        android:hint="@string/loginPassword"
         android:layout_margin="20dp"
         android:textColorHint="@color/colorBlack"
         android:layout_width="match_parent"
@@ -38,21 +39,31 @@
         android:maxLines="1"
         android:maxLength="15"
         />
+    <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/lpassword"
+            android:text="Remember Me"
+            android:textSize="20sp"
+            android:id="@+id/rememberme"
+            android:layout_margin="20dp"
+            android:padding="10dp"/>
     <LinearLayout
         android:id="@+id/buttonLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/lpassword"
+        android:layout_below="@id/rememberme"
         android:weightSum="2"
 
         >
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"
-            android:textSize="20sp"
-            android:textColor="@color/colorBlack"
+            android:text="@string/loginLoginBtn"
+            android:textSize="15sp"
+            android:textColor="@color/colorWhite"
             android:id="@+id/llogin"
+            android:background="@drawable/rounded_edittext"
             android:layout_margin="15dp"
             android:layout_weight="1"
             android:padding="15dp"
@@ -61,28 +72,14 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="register"
-            android:textSize="20sp"
+            android:text="@string/loginRegisterBtn"
+            android:textSize="15sp"
             android:layout_weight="1"
             android:id="@+id/lregister"
-            android:textColor="@color/colorBlack"
+            android:background="@drawable/rounded_edittext"
+            android:textColor="@color/colorWhite"
             android:layout_margin="15dp"
             android:padding="15dp"
             />
     </LinearLayout>
-
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/buttonLayout"
-        android:text="Remember Me"
-        android:textSize="20sp"
-        android:id="@+id/rememberme"
-        android:layout_margin="20dp"
-        android:padding="10dp"/>
-
-
-
-
 </RelativeLayout>

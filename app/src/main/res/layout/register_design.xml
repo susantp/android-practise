@@ -132,15 +132,25 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textSize="15sp"
+                    android:background="@drawable/rounded_edittext"
                     android:onClick="submitClick"
+                    android:textColor="@color/colorWhite"
+                    android:layout_margin="15dp"
+                    android:padding="15dp"
                     android:text="Submit" />
 
                 <Button
                     android:id="@+id/cancel"
                     android:layout_width="0dp"
                     android:onClick="cancelClick"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorWhite"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_edittext"
                     android:layout_weight="1"
+                    android:layout_margin="15dp"
+                    android:padding="15dp"
                     android:text="Cancel" />
             </LinearLayout>
         </LinearLayout>

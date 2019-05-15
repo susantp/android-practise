@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 String registeredUser = preferences.getString("name","");
                 String registeredPass = preferences.getString("password", "");
-                if(usernameVal.equals(registeredUser)&&passwordVal.equals(registeredPass)){
+                if(usernameVal.equals(registeredUser) && passwordVal.equals(registeredPass) && usernameVal.length()!=0 && passwordVal.length() !=0  ){
                     Toast.makeText(LoginActivity.this, "Login Succeed", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(LoginActivity.this,FbDesign.class));
                     finish();
