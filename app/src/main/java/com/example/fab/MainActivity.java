@@ -74,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id){
             case R.id.exit:
-                finish();
+                finishAffinity();
+                System.exit(0);
                 break;
         }
         return super.onOptionsItemSelected(item);
