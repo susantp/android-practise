@@ -5,4 +5,5 @@
     <string name="loginPassword">password</string>
     <string name="loginLoginBtn">Login</string>
     <string name="loginRegisterBtn">Register</string>
+    <string name="appExit">Exit</string>
 </resources>
