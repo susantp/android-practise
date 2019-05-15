@@ -1,5 +1,6 @@
 package com.example.fab;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         cancel = findViewById(R.id.cancel);
     }
 
+    public void cancelClick(View view){
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+    }
+
     public void submitClick(View view) {
         String nameVal = name.getText().toString();
         String emailVal = email.getText().toString();
@@ -42,12 +47,6 @@ public class MainActivity extends AppCompatActivity {
         String passwordVal = password.getText().toString();
         RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
         String genderVal = checkedBtn.getText().toString();
-//        Toast.makeText(this, "name: "+nameVal
-//                +"\nemail: "+emailVal
-//                +"\naddress: "+addressVal
-//                +"\npassword: "+passwordVal
-//                +"\ngender: "+genderVal
-//                , Toast.LENGTH_LONG).show();
 
          SharedPreferences.Editor editor = preferences.edit();
          editor.putString("name",nameVal);
@@ -58,5 +57,7 @@ public class MainActivity extends AppCompatActivity {
          editor.putString("gender", genderVal);
          editor.apply();
         Toast.makeText(this, "UserInfo Saved", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+
     }
 }
