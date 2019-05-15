@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
          editor.putString("address", addressVal);
          editor.putString("gender", genderVal);
          editor.apply();
-        Toast.makeText(this, "UserInfo Saved", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "UserInfo Saved", Toast.LENGTH_LONG).show();
         startActivity(new Intent(MainActivity.this, LoginActivity.class));
 
     }
