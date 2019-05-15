@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/title"
@@ -14,31 +17,42 @@
         android:textSize="25sp"
         android:textStyle="bold" />
 
-    <EditText
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/lusername"
-        android:hint="@string/loginUser"
-        android:layout_margin="20dp"
-        android:textColorHint="@color/colorBlack"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title"
-        android:inputType="text"
-        android:maxLines="1"
-        android:maxLength="15"
-        />
+        android:layout_margin="20dp"
+        app:counterEnabled="true"
+        android:layout_height="wrap_content">
 
-    <EditText
+        <android.support.design.widget.TextInputEditText
+            android:hint="@string/loginUser"
+            android:textColorHint="@color/colorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1"
+            android:maxLength="15"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/lpassword"
-        android:hint="@string/loginPassword"
-        android:layout_margin="20dp"
-        android:textColorHint="@color/colorBlack"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/lusername"
-        android:inputType="textPassword"
-        android:maxLines="1"
-        android:maxLength="15"
-        />
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:hint="@string/loginPassword"
+            android:textColorHint="@color/colorBlack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:maxLength="15"
+            />
+    </android.support.design.widget.TextInputLayout>
+
     <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -82,4 +96,4 @@
             android:padding="15dp"
             />
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

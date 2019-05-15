@@ -2,8 +2,11 @@ package com.example.fab;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +18,7 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText username, password;
+    TextInputLayout username, password;
     Button login, register;
     SharedPreferences preferences;
     CheckBox rememberme;
@@ -38,9 +41,10 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String usernameVal = username.getText().toString();
-                String passwordVal = password.getText().toString();
-
+                String usernameVal = username.getEditText().getText().toString().trim();
+                String passwordVal = password.getEditText().getText().toString().trim();
+//                Toast.makeText(LoginActivity.this, "username:"+usernameVal+" password: "+passwordVal, Toast.LENGTH_LONG).show();
+//                Log.i("this","username:"+usernameVal+" password: "+passwordVal);
                 String registeredUser = preferences.getString("name","");
                 String registeredPass = preferences.getString("password", "");
                 if(usernameVal.equals(registeredUser) && passwordVal.equals(registeredPass) && usernameVal.length()!=0 && passwordVal.length() !=0  ){

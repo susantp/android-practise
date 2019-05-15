@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Fab</string>
     <string name="loginTitle">Login Form</string>
-    <string name="loginUser">username</string>
-    <string name="loginPassword">password</string>
+    <string name="loginUser">Username</string>
+    <string name="loginPassword">Password</string>
     <string name="loginLoginBtn">Login</string>
     <string name="loginRegisterBtn">Register</string>
     <string name="appExit">Exit</string>
