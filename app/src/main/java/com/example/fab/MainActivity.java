@@ -16,17 +16,21 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    //    private static final int pic_id = 123;
-    //    private static ImageView imageView;
     EditText name, email, address, password;
     RadioGroup gender;
     Button submit, cancel;
     SharedPreferences preferences;
+    DatabaseHelper myDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_design);
+        myDb = new DatabaseHelper(this);
+        myDb.insertRow();
+
+        Toast.makeText(this, "List Size : "+ myDb.DatabaseListSize(), Toast.LENGTH_LONG).show();
+
 
         preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
         name = findViewById(R.id.name);
