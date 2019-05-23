@@ -1,5 +1,6 @@
 package com.example.fab;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,26 +17,23 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText name, email, address, password;
+    EditText name, email, address, password, phone;
     RadioGroup gender;
     Button submit, cancel;
     SharedPreferences preferences;
-    DatabaseHelper myDb;
+    DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_design);
-        myDb = new DatabaseHelper(this);
-        myDb.insertRow();
-
-        Toast.makeText(this, "List Size : "+ myDb.DatabaseListSize(), Toast.LENGTH_LONG).show();
-
+        databaseHelper = new DatabaseHelper(this);
 
         preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
-        name = findViewById(R.id.name);
+        name = findViewById(R.id.username);
         email = findViewById(R.id.email);
         address = findViewById(R.id.address);
+        phone = findViewById(R.id.phone);
         password = findViewById(R.id.password);
         gender = findViewById(R.id.gender);
         submit = findViewById(R.id.submit);
@@ -47,24 +45,36 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void submitClick(View view) {
-        String nameVal = name.getText().toString();
-        String emailVal = email.getText().toString();
-        String addressVal = address.getText().toString();
-        String passwordVal = password.getText().toString();
-        RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
-        String genderVal = checkedBtn.getText().toString();
+        if (view.getId() == R.id.submit) {
+            String usernameVal = name.getText().toString();
+            String emailVal = email.getText().toString();
+            String addressVal = address.getText().toString();
+            String phoneVal = phone.getText().toString();
+            String passwordVal = password.getText().toString();
+            RadioButton checkedBtn = findViewById(gender.getCheckedRadioButtonId());
+            String genderVal = checkedBtn.getText().toString();
 
-         SharedPreferences.Editor editor = preferences.edit();
-         editor.putString("name",nameVal);
-         editor.putString("email",emailVal);
-         editor.putString("password",passwordVal);
-         editor.putString("gender",genderVal);
-         editor.putString("address", addressVal);
-         editor.putString("gender", genderVal);
-         editor.apply();
-        Toast.makeText(this, "UserInfo Saved", Toast.LENGTH_LONG).show();
-        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putString("username", usernameVal);
+            editor.putString("email", emailVal);
+            editor.putString("password", passwordVal);
+            editor.putString("gender", genderVal);
+            editor.putString("address", addressVal);
+            editor.putString("phone", phoneVal);
+            editor.apply();
 
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("username", usernameVal);
+            contentValues.put("email", emailVal);
+            contentValues.put("password", passwordVal);
+            contentValues.put("gender", genderVal);
+            contentValues.put("address", addressVal);
+            contentValues.put("phone", phoneVal);
+            databaseHelper.insertUser(contentValues);
+
+            Toast.makeText(this, "UserInfo Saved", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        }
     }
 
     @Override

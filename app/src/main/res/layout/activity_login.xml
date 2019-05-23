@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    tools:context=".LoginActivity"
     android:layout_height="match_parent">
 
     <TextView
@@ -18,13 +20,14 @@
         android:textStyle="bold" />
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/lusername"
+        android:id="@+id/lusernameLayout"
         android:layout_width="match_parent"
         android:layout_margin="20dp"
         app:counterEnabled="true"
         android:layout_height="wrap_content">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/lusername"
             android:hint="@string/loginUser"
             android:textColorHint="@color/colorBlack"
             android:layout_width="match_parent"
@@ -37,12 +40,13 @@
 
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/lpassword"
+        android:id="@+id/lpasswordLayout"
         android:layout_width="match_parent"
         android:layout_margin="20dp"
         android:layout_height="wrap_content">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/lpassword"
             android:hint="@string/loginPassword"
             android:textColorHint="@color/colorBlack"
             android:layout_width="match_parent"
