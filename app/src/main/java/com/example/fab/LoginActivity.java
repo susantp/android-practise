@@ -20,6 +20,8 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences preferences;
     CheckBox rememberme;
 
+    DatabaseHelper databaseHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,9 @@ public class LoginActivity extends AppCompatActivity {
         register = findViewById(R.id.lregister);
         rememberme = findViewById(R.id.rememberme);
         preferences = getSharedPreferences("UserInfo", 0);
+
+        databaseHelper = new DatabaseHelper(this);
+
         if (preferences.getBoolean("rememberme", false)) {
             startActivity(new Intent(LoginActivity.this, FbDesign.class));
             finish();
@@ -43,10 +48,11 @@ public class LoginActivity extends AppCompatActivity {
 
 //                Toast.makeText(LoginActivity.this, "username:"+usernameVal+" password: "+passwordVal, Toast.LENGTH_LONG).show();
 //                Log.i("this","username:"+usernameVal+" password: "+passwordVal);
-                String registeredUsername = preferences.getString("username", "");
-                String registeredPass = preferences.getString("password", "");
+//                String registeredUsername = preferences.getString("username", "");
+//                String registeredPass = preferences.getString("password", "");
                 if (isfieldEmpty(username) && isfieldEmpty(password)) {
-                    if (usernameVal.equals(registeredUsername) && passwordVal.equals(registeredPass) && usernameVal.length() != 0 && passwordVal.length() != 0) {
+                    if (databaseHelper.isLoginSuccessful(usernameVal, passwordVal)) {
+//                    if (usernameVal.equals(registeredUsername) && passwordVal.equals(registeredPass) && usernameVal.length() != 0 && passwordVal.length() != 0) {
                         Toast.makeText(LoginActivity.this, "Login Succeed", Toast.LENGTH_LONG).show();
                         startActivity(new Intent(LoginActivity.this, FbDesign.class));
                         finish();

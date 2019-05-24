@@ -2,18 +2,21 @@ package com.example.fab;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class UserDetailActivity extends AppCompatActivity {
 
     String id;
     TextView username, password, email, address, phone, gender;
+    ImageView imageView;
     DatabaseHelper databaseHelper;
 
     @Override
@@ -28,6 +31,7 @@ public class UserDetailActivity extends AppCompatActivity {
         address = findViewById(R.id.address);
         phone = findViewById(R.id.phone);
         gender = findViewById(R.id.gender);
+        imageView = findViewById(R.id.image);
 
         findViewById(R.id.update).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +65,8 @@ public class UserDetailActivity extends AppCompatActivity {
         address.setText(info.getAddress());
         phone.setText(info.getPhone());
         gender.setText(info.getGender());
+        imageView.setImageBitmap(GeneralUtil.getBitmap(info.getImage()));
+
     }
 
     public void showAlertDialog(){

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteStatement;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "\t\"image\"\tBLOB\n" +
             ")";
 
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
+    }
+
     public DatabaseHelper(Context context) {
         super(context, name, null, version);
         getWritableDatabase().execSQL(CreateUserTableSql);
@@ -32,18 +43,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         getWritableDatabase().insert("user", "", contentValues);
     }
 
-    public void updateUser(String id, ContentValues contentValues){
+    public void updateUser(String id, ContentValues contentValues) {
         /* getWritableDatabase().update("user", contentValues, "id="+id, null); */
         getWritableDatabase().update("user", contentValues, "id=?", new String[]{id});
     }
 
-    public void deleteUser(String id){
+    public void deleteUser(String id) {
         getWritableDatabase().delete("user", "id=?", new String[]{id});
     }
 
     public ArrayList<UserInfo> getUserList() {
         String sql = "Select * from user";
-
         Cursor cursor = getReadableDatabase().rawQuery(sql, null);
         ArrayList<UserInfo> list = new ArrayList<>();
         while (cursor.moveToNext()) {
@@ -56,7 +66,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             info.setPhone(cursor.getString(cursor.getColumnIndex("phone")));
             info.setGender(cursor.getString(cursor.getColumnIndex("gender")));
             info.setImage(cursor.getBlob(cursor.getColumnIndex("image")));
-
             list.add(info);
         }
         cursor.close();
@@ -65,7 +74,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public UserInfo getUserInfo(String id) {
         String sql = "Select * from user where id=" + id;
-
         Cursor cursor = getReadableDatabase().rawQuery(sql, null);
         UserInfo info = new UserInfo();
         while (cursor.moveToNext()) {
@@ -83,13 +91,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return info;
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+    public boolean isLoginSuccessful(String username, String password) {
+        String sql = "SELECT count(*) from user where username ='" + username + "' and password='" + password + "'";
+        SQLiteStatement statement = getReadableDatabase().compileStatement(sql);
+        long l = statement.simpleQueryForLong();
+        if (l == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

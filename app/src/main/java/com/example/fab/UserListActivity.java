@@ -3,16 +3,14 @@ package com.example.fab;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -40,13 +38,17 @@ public class UserListActivity extends AppCompatActivity {
 //
 
         container.removeAllViews();
-        if(list.size()!=0) {
+        if (list.size() != 0) {
             for (final UserInfo info : list) {
                 View view = LayoutInflater.from(this).inflate(R.layout.item_layout, null);
                 TextView name = view.findViewById(R.id.name);
                 TextView address = view.findViewById(R.id.address);
+                ImageView imageView = view.findViewById(R.id.image);
                 name.setText(info.getUsername());
                 address.setText(info.getAddress());
+                if (info.getImage() != null)
+                    imageView.setImageBitmap(GeneralUtil.getBitmap(info.getImage()));
+
 //            TextView textView = new TextView(this);
 //            LinearLayout.LayoutParams params = new
 //                    LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
@@ -73,7 +75,7 @@ public class UserListActivity extends AppCompatActivity {
                 });
                 container.addView(view);
             }
-        }else{
+        } else {
             View view = LayoutInflater.from(this).inflate(R.layout.item_layout, null);
             TextView name = view.findViewById(R.id.name);
             TextView address = view.findViewById(R.id.address);
@@ -96,7 +98,7 @@ public class UserListActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch (id){
+        switch (id) {
             case R.id.exit:
                 finishAffinity();
                 System.exit(0);
