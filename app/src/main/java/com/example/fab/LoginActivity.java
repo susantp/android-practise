@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
 
 //                Toast.makeText(LoginActivity.this, "username:"+usernameVal+" password: "+passwordVal, Toast.LENGTH_LONG).show();
 //                Log.i("this","username:"+usernameVal+" password: "+passwordVal);
-                String registeredUsername = preferences.getString("name", "");
+                String registeredUsername = preferences.getString("username", "");
                 String registeredPass = preferences.getString("password", "");
                 if (isfieldEmpty(username) && isfieldEmpty(password)) {
                     if (usernameVal.equals(registeredUsername) && passwordVal.equals(registeredPass) && usernameVal.length() != 0 && passwordVal.length() != 0) {

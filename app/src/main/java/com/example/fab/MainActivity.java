@@ -17,11 +17,12 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText name, email, address, password, phone;
+    EditText username, email, address, password, phone;
     RadioGroup gender;
     Button submit, cancel;
     SharedPreferences preferences;
     DatabaseHelper databaseHelper;
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
 
         preferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
-        name = findViewById(R.id.username);
+        username = findViewById(R.id.username);
         email = findViewById(R.id.email);
         address = findViewById(R.id.address);
         phone = findViewById(R.id.phone);
@@ -38,6 +39,24 @@ public class MainActivity extends AppCompatActivity {
         gender = findViewById(R.id.gender);
         submit = findViewById(R.id.submit);
         cancel = findViewById(R.id.cancel);
+
+        id = getIntent().getIntExtra("id", 0);
+
+        if(id!=0){
+            UserInfo info = databaseHelper.getUserInfo(id+"");
+            username.setText(info.getUsername());
+            email.setText(info.getEmail());
+            address.setText(info.getAddress());
+            phone.setText(info.getPhone());
+//            gender.setText(info.getGender());
+            if(info.getGender().equals("Male")){
+                ((RadioButton) findViewById(R.id.male)).setChecked(true);
+            }else{
+                ((RadioButton) findViewById(R.id.female)).setChecked(true);
+            }
+            submit.setText("Update");
+        }
+
     }
 
     public void cancelClick(View view){
@@ -46,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void submitClick(View view) {
         if (view.getId() == R.id.submit) {
-            String usernameVal = name.getText().toString();
+            String usernameVal = username.getText().toString();
             String emailVal = email.getText().toString();
             String addressVal = address.getText().toString();
             String phoneVal = phone.getText().toString();
@@ -70,7 +89,11 @@ public class MainActivity extends AppCompatActivity {
             contentValues.put("gender", genderVal);
             contentValues.put("address", addressVal);
             contentValues.put("phone", phoneVal);
-            databaseHelper.insertUser(contentValues);
+            if(id == 0){
+                databaseHelper.insertUser(contentValues);
+            }else{
+                databaseHelper.updateUser(String.valueOf(id), contentValues);
+            }
 
             Toast.makeText(this, "UserInfo Saved", Toast.LENGTH_LONG).show();
             startActivity(new Intent(MainActivity.this, LoginActivity.class));

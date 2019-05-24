@@ -32,12 +32,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         getWritableDatabase().insert("user", "", contentValues);
     }
 
-    public ArrayList<UserInfo> getUserList(){
+    public void updateUser(String id, ContentValues contentValues){
+        /* getWritableDatabase().update("user", contentValues, "id="+id, null); */
+        getWritableDatabase().update("user", contentValues, "id=?", new String[]{id});
+    }
+
+    public void deleteUser(String id){
+        getWritableDatabase().delete("user", "id=?", new String[]{id});
+    }
+
+    public ArrayList<UserInfo> getUserList() {
         String sql = "Select * from user";
 
         Cursor cursor = getReadableDatabase().rawQuery(sql, null);
-        ArrayList<UserInfo>list = new ArrayList<>();
-        while(cursor.moveToNext()){
+        ArrayList<UserInfo> list = new ArrayList<>();
+        while (cursor.moveToNext()) {
             UserInfo info = new UserInfo();
             info.setId(cursor.getString(cursor.getColumnIndex("id")));
             info.setUsername(cursor.getString(cursor.getColumnIndex("username")));
@@ -52,6 +61,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         cursor.close();
         return list;
+    }
+
+    public UserInfo getUserInfo(String id) {
+        String sql = "Select * from user where id=" + id;
+
+        Cursor cursor = getReadableDatabase().rawQuery(sql, null);
+        UserInfo info = new UserInfo();
+        while (cursor.moveToNext()) {
+            info.setId(cursor.getString(cursor.getColumnIndex("id")));
+            info.setUsername(cursor.getString(cursor.getColumnIndex("username")));
+            info.setPassword(cursor.getString(cursor.getColumnIndex("password")));
+            info.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+            info.setAddress(cursor.getString(cursor.getColumnIndex("address")));
+            info.setPhone(cursor.getString(cursor.getColumnIndex("phone")));
+            info.setGender(cursor.getString(cursor.getColumnIndex("gender")));
+            info.setImage(cursor.getBlob(cursor.getColumnIndex("image")));
+
+        }
+        cursor.close();
+        return info;
     }
 
     @Override
