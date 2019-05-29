@@ -24,6 +24,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "\t\"image\"\tBLOB\n" +
             ")";
 
+    public DatabaseHelper(Context context) {
+        super(context, name, null, version);
+        getWritableDatabase().execSQL(CreateUserTableSql);
+    }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
 
@@ -32,11 +37,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-    }
-
-    public DatabaseHelper(Context context) {
-        super(context, name, null, version);
-        getWritableDatabase().execSQL(CreateUserTableSql);
     }
 
     public void insertUser(ContentValues contentValues) {

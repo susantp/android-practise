@@ -22,7 +22,7 @@ public class UserListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_list);
+        setContentView(R.layout.activity_user_list1);
         databaseHelper = new DatabaseHelper(this);
         container = findViewById(R.id.container);
     }
@@ -35,7 +35,10 @@ public class UserListActivity extends AppCompatActivity {
 
     public void populateData() {
         ArrayList<UserInfo> list = databaseHelper.getUserList();
-//
+//this for loop is alternate of below foreach statement
+        for(int i=0; i<list.size(); i++){
+            UserInfo info = list.get(i);
+        }
 
         container.removeAllViews();
         if (list.size() != 0) {

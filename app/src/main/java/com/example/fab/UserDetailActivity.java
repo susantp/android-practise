@@ -2,7 +2,6 @@ package com.example.fab;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -65,11 +64,12 @@ public class UserDetailActivity extends AppCompatActivity {
         address.setText(info.getAddress());
         phone.setText(info.getPhone());
         gender.setText(info.getGender());
-        imageView.setImageBitmap(GeneralUtil.getBitmap(info.getImage()));
+        if (info.getImage() != null)
+            imageView.setImageBitmap(GeneralUtil.getBitmap(info.getImage()));
 
     }
 
-    public void showAlertDialog(){
+    public void showAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Delete User");
         builder.setMessage("Are you sure?");
@@ -98,7 +98,7 @@ public class UserDetailActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        switch (id){
+        switch (id) {
             case R.id.exit:
                 finishAffinity();
                 System.exit(0);

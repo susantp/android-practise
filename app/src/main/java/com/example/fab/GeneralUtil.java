@@ -7,8 +7,11 @@ import java.io.ByteArrayOutputStream;
 
 public class GeneralUtil {
 
+    private static byte[] bArray;
+
     /**
      * to get bitmap from byteArray
+     *
      * @param byteArray
      * @return bitmap
      */
@@ -18,6 +21,7 @@ public class GeneralUtil {
 
     /**
      * Blob to byteArray
+     *
      * @param bitmap
      * @return byte[]
      */

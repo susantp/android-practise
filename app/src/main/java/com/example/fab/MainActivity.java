@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
             email.setText(info.getEmail());
             address.setText(info.getAddress());
             phone.setText(info.getPhone());
+            if (info.getImage() != null)
+                imageView.setImageBitmap(GeneralUtil.getBitmap(info.getImage()));
 //            gender.setText(info.getGender());
             if (info.getGender().equals("Male")) {
                 ((RadioButton) findViewById(R.id.male)).setChecked(true);
@@ -111,11 +113,16 @@ public class MainActivity extends AppCompatActivity {
             contentValues.put("gender", genderVal);
             contentValues.put("address", addressVal);
             contentValues.put("phone", phoneVal);
-            contentValues.put("image", GeneralUtil.getblob(bitmap));
+            if (bitmap != null) {
+                contentValues.put("image", GeneralUtil.getblob(bitmap));
+            }else{
+                contentValues.put("image", "");
+            }
             if (id == 0) {
                 databaseHelper.insertUser(contentValues);
             } else {
                 databaseHelper.updateUser(String.valueOf(id), contentValues);
+                finish();
             }
             Toast.makeText(this, "UserInfo Saved", Toast.LENGTH_LONG).show();
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
