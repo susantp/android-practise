@@ -78,6 +78,10 @@ public class UserDetailActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 databaseHelper.deleteUser(id);
                 finish();
+
+                //sending to list View for loading new list
+                Intent intent = new Intent(UserDetailActivity.this,UserListViewActivity.class);
+                startActivity(intent);
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

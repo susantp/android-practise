@@ -31,6 +31,14 @@
                 android:text="Rent Room"
                 android:textColor="@color/colorWhite" />
         </LinearLayout>
+        <Button
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:text="edit"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_edittext"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="0dp"

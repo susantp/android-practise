@@ -18,6 +18,12 @@ public class UserListViewActivity extends AppCompatActivity {
         populateList();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        populateList();
+    }
+
     public void populateList(){
         listView.setAdapter(userListAdapter);
     }

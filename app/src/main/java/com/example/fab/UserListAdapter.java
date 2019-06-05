@@ -60,6 +60,22 @@ public class UserListAdapter extends ArrayAdapter<UserInfo> {
             if (info.getImage() != null)
                 imageView.setImageBitmap(GeneralUtil.getBitmap(info.getImage()));
                 imageView1.setImageBitmap(GeneralUtil.getBitmap(info.getImage()));
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(context, UserDetailActivity.class);
+                        intent.putExtra("id", info.getId());
+                        context.startActivity(intent);
+                    }
+                });
+                view.findViewById(R.id.edit).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(context, MainActivity.class);
+                        intent.putExtra("id", Integer.parseInt(info.getId()));
+                        context.startActivity(intent);
+                    }
+                });
             return view;
         }
     }

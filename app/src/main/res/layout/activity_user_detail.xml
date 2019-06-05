@@ -54,18 +54,30 @@
             android:id="@+id/gender"
             android:text="gender"
             />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/update"
-            android:text="Update"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/delete"
-            android:text="Delete"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:weightSum="2"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textColor="@color/colorWhite"
+                android:id="@+id/update"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_edittext"
+                android:text="Update"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:id="@+id/delete"
+                android:layout_weight="1"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/rounded_edittext"
+                android:text="Delete"/>
+        </LinearLayout>
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
